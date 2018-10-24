@@ -18,7 +18,7 @@ public class CarApp {
 		scan.nextLine();
 
 		Car[] cars = new Car[usrCarNum];
-
+		// Get user info for cars
 		for (int i = 0; i < usrCarNum; i++) {
 			int num = i + 1;
 			String make = Validator.getString(scan, "Enter Car # " + num + " Make: ");
@@ -27,7 +27,7 @@ public class CarApp {
 			double price = Validator.getDouble(scan, "Enter Car # " + num + " Price: ", 0, Integer.MAX_VALUE);
 			carList.add(new Car(make, model, year, price, num));
 		}
-
+		// Add used cars. plus 1, 2, 3, to usercarnum index
 		UsedCar uc1 = new UsedCar("Ferd", "Stolen Ride", 2017, 212.22, usrCarNum + 1);
 		uc1.setMileage(11111.2);
 		carList.add(uc1);
@@ -42,7 +42,7 @@ public class CarApp {
 
 		boolean quit = true;
 		int menutotal = usrCarNum + 4;
-
+		// print of list cars
 		do {
 			quit = false;
 			System.out.println("\nCurrent Inventory:");
@@ -67,7 +67,7 @@ public class CarApp {
 				String selectCar = Validator.getString(scan, "Would you like to purchase this car? y/n ");
 
 				System.out.println(carList.get(choice - 1));
-
+				// if user chooses car, remove from list
 				if (selectCar.equalsIgnoreCase("y")) {
 					System.out.println("Excellent! our finance department will be in touch shortly.\n");
 					carList.remove(choice - 1);
